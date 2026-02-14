@@ -22,7 +22,7 @@ const ROICounter: React.FC<ROICounterProps> = ({ targetValue, suffix = "", label
         duration: duration,
         ease: "easeOut" 
       });
-      return controls.stop;
+      return () => controls.stop();
     }
   }, [isInView, count, targetValue, duration]);
 

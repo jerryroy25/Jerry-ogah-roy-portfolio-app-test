@@ -11,23 +11,45 @@ import Contact from './components/Contact';
 import DesignServices from './components/DesignServices';
 import SystemModal from './components/SystemModal';
 import RoadmapModal from './components/RoadmapModal';
-import { Github, Linkedin, Palette, Instagram, Facebook, Twitter, Terminal as TerminalIcon } from 'lucide-react';
+import { Github, Linkedin, Palette, Instagram, Facebook, Twitter, Terminal as TerminalIcon, LucideIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
+
+export interface Agent {
+  id: string;
+  name: string;
+  type: string;
+  price: string;
+  status: string;
+  description: string;
+  icon: LucideIcon;
+  metrics: Record<string, string>;
+  tags: string[];
+}
+
+export interface Project {
+  title: string;
+  description: string;
+  stat: string;
+  subStat: string;
+  icon: LucideIcon;
+  tags: string[];
+  type: string;
+}
 
 const App: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalData, setModalData] = useState<any>(null);
+  const [modalData, setModalData] = useState<Agent | Project | null>(null);
   const [modalType, setModalType] = useState<'agent' | 'project'>('agent');
   const [inquirySubject, setInquirySubject] = useState('');
   const [roadmapOpen, setRoadmapOpen] = useState(false);
 
-  const openModal = (data: any, type: 'agent' | 'project') => {
+  const openModal = (data: Agent | Project, type: 'agent' | 'project') => {
     setModalData(data);
     setModalType(type);
     setModalOpen(true);
   };
 
-  const handleStoreInitialize = (agent: any) => {
+  const handleStoreInitialize = (agent: Agent) => {
     setInquirySubject(`Inquiry: Initialization of ${agent.name}`);
     const contactSection = document.getElementById('contact');
     contactSection?.scrollIntoView({ behavior: 'smooth' });
@@ -51,8 +73,8 @@ const App: React.FC = () => {
       <main className="relative z-10">
         <Hero onOpenRoadmap={() => setRoadmapOpen(true)} />
         <HormoziValueBar />
-        <Store onOpenDetails={(data) => openModal(data, 'agent')} onInitialize={handleStoreInitialize} />
-        <ProjectGallery onOpenDetails={(data) => openModal(data, 'project')} />
+        <Store onOpenDetails={(data: Agent) => openModal(data, 'agent')} onInitialize={handleStoreInitialize} />
+        <ProjectGallery onOpenDetails={(data: Project) => openModal(data, 'project')} />
         <DesignServices />
         <TechStack />
         <About />
@@ -60,15 +82,12 @@ const App: React.FC = () => {
       </main>
       
       <footer className="relative z-10 border-t border-slate-900 bg-slate-950 py-20 overflow-hidden">
-        {/* Background Label */}
         <div className="absolute bottom-0 left-0 w-full flex justify-center pointer-events-none select-none opacity-[0.02]">
           <span className="font-mono text-[10vw] font-black leading-none text-cyan-400">CONNECT_PROTOCOL</span>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="flex flex-col items-center gap-12 text-center">
-            
-            {/* Branding & Source */}
             <div className="space-y-4">
               <div className="flex items-center justify-center gap-2 group mb-2">
                 <p className="font-black text-2xl text-slate-200 uppercase tracking-tighter">
@@ -86,7 +105,6 @@ const App: React.FC = () => {
               </a>
             </div>
 
-            {/* Social Integration Grid with Staggered Animation */}
             <motion.div 
               initial="hidden"
               whileInView="show"
@@ -96,7 +114,7 @@ const App: React.FC = () => {
               }}
               className="flex flex-wrap justify-center gap-4 md:gap-8"
             >
-              {socialLinks.map((social, i) => (
+              {socialLinks.map((social) => (
                 <motion.a
                   key={social.label}
                   href={social.link}

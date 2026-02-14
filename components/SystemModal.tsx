@@ -1,16 +1,22 @@
 
 import React from 'react';
 import { X, Cpu, Zap, Shield, Code, ArrowRight } from 'lucide-react';
+import { Agent, Project } from '../App';
 
 interface SystemModalProps {
   isOpen: boolean;
   onClose: () => void;
-  data: any;
+  data: Agent | Project | null;
   type: 'agent' | 'project';
 }
 
 const SystemModal: React.FC<SystemModalProps> = ({ isOpen, onClose, data, type }) => {
   if (!isOpen || !data) return null;
+
+  // Type Guards
+  const isAgent = (d: Agent | Project): d is Agent => type === 'agent';
+  const name = isAgent(data) ? data.name : data.title;
+  const tags = isAgent(data) ? data.tags : data.tags;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6">
@@ -24,8 +30,8 @@ const SystemModal: React.FC<SystemModalProps> = ({ isOpen, onClose, data, type }
               {type === 'agent' ? <Cpu className="w-6 h-6 text-cyan-400" /> : <Code className="w-6 h-6 text-cyan-400" />}
             </div>
             <div>
-              <h3 className="text-2xl font-black text-white">{data.name || data.title}</h3>
-              <p className="text-xs uppercase tracking-widest font-bold text-slate-500">{data.type || 'Case Study'}</p>
+              <h3 className="text-2xl font-black text-white">{name}</h3>
+              <p className="text-xs uppercase tracking-widest font-bold text-slate-500">{isAgent(data) ? data.type : 'Case Study'}</p>
             </div>
           </div>
           <button onClick={onClose} className="p-2 hover:bg-slate-800 rounded-full transition-colors text-slate-400 hover:text-white">
@@ -52,7 +58,7 @@ const SystemModal: React.FC<SystemModalProps> = ({ isOpen, onClose, data, type }
               <section>
                 <h4 className="text-xs font-black uppercase tracking-[0.3em] text-cyan-500 mb-4">Technical Stack</h4>
                 <div className="flex flex-wrap gap-3">
-                  {(data.tags || data.features || []).map((tag: string) => (
+                  {tags.map((tag: string) => (
                     <span key={tag} className="px-4 py-2 bg-slate-950 border border-slate-800 rounded font-mono text-xs text-slate-400">
                       {tag}
                     </span>
@@ -66,12 +72,12 @@ const SystemModal: React.FC<SystemModalProps> = ({ isOpen, onClose, data, type }
                   <h4 className="text-xs font-black uppercase tracking-widest text-white">Expected Performance</h4>
                 </div>
                 <div className="grid grid-cols-2 gap-6">
-                  {data.metrics ? Object.entries(data.metrics).map(([k, v]) => (
+                  {isAgent(data) && data.metrics ? Object.entries(data.metrics).map(([k, v]) => (
                     <div key={k}>
                       <div className="text-[10px] uppercase font-bold text-slate-600 mb-1">{k.replace('_', ' ')}</div>
-                      <div className="text-xl font-bold text-slate-100">{v as string}</div>
+                      <div className="text-xl font-bold text-slate-100">{v}</div>
                     </div>
-                  )) : (
+                  )) : !isAgent(data) && (
                     <div>
                       <div className="text-[10px] uppercase font-bold text-slate-600 mb-1">Impact</div>
                       <div className="text-xl font-bold text-slate-100">{data.stat}</div>
@@ -117,7 +123,7 @@ const SystemModal: React.FC<SystemModalProps> = ({ isOpen, onClose, data, type }
 
         {/* Footer */}
         <div className="p-4 bg-slate-950 border-t border-slate-800 flex justify-between items-center px-8">
-          <span className="text-[10px] font-mono text-slate-600 uppercase">SYSTEM_ID: {data.id || 'CS-99'}</span>
+          <span className="text-[10px] font-mono text-slate-600 uppercase">SYSTEM_ID: {isAgent(data) ? data.id : 'CS-99'}</span>
           <span className="text-[10px] font-mono text-cyan-800 uppercase animate-pulse">Connection Secured</span>
         </div>
       </div>
