@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ShieldCheck, Terminal, Cpu, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -41,7 +42,7 @@ const About: React.FC = () => {
                   src="jeroy pic edited no bg.png" 
                   alt="Jerry Ogah Roy" 
                   className="relative z-10 h-full w-full object-cover headshot-filter scale-110 group-hover:scale-105 transition-transform duration-1000 ease-out"
-                  onError={(e) => {
+                  onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
                     // Fallback to a high-quality placeholder if the file is missing
                     (e.target as HTMLImageElement).src = "https://res.cloudinary.com/dqpqndyvx/image/upload/v1771084461/Jeroy_profile_full_0.5x_zwrvgy.png";
                   }}
@@ -56,7 +57,7 @@ const About: React.FC = () => {
 
                 {/* Vertical HUD markings */}
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-1 opacity-20 z-30">
-                  {[...Array(8)].map((_, i) => (
+                  {[...Array(8)].map((_, i: number) => (
                     <div key={i} className={`h-1 w-2 bg-cyan-400 ${i % 3 === 0 ? 'w-4' : ''}`} />
                   ))}
                 </div>

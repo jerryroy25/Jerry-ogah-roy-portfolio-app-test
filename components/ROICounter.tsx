@@ -11,9 +11,9 @@ interface ROICounterProps {
 
 const ROICounter: React.FC<ROICounterProps> = ({ targetValue, suffix = "", label, duration = 2 }) => {
   const count = useMotionValue(0);
-  const rounded = useTransform(count, (latest) => Math.round(latest));
+  const rounded = useTransform(count, (latest: number) => Math.round(latest));
   const [displayValue, setDisplayValue] = useState(0);
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const ROICounter: React.FC<ROICounterProps> = ({ targetValue, suffix = "", label
   }, [isInView, count, targetValue, duration]);
 
   useEffect(() => {
-    return rounded.on("change", (v) => setDisplayValue(v));
+    return rounded.on("change", (v: number) => setDisplayValue(v));
   }, [rounded]);
 
   return (
