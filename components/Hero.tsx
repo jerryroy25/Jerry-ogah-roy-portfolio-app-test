@@ -25,7 +25,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenRoadmap }) => {
           transition={{ duration: 0.8 }}
           className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-8 max-w-5xl"
         >
-          Every Month. Scale <br className="hidden md:block" /> Without Hiring.
+          Stop Wasting 40+ Hours Every Month. Scale <br className="hidden md:block" /> Without Hiring.
         </motion.h1>
 
         <motion.div 
