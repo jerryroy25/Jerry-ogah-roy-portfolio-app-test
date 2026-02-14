@@ -1,72 +1,104 @@
 
 import React from 'react';
-import { ExternalLink, Database, MessageSquare, Mail } from 'lucide-react';
+import { ExternalLink, Database, MessageSquare, Mail, Zap, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const projects = [
   {
-    title: "Financial Vision Agent",
-    description: "Telegram-driven AI extraction for bookkeeping. Transforms messy receipts into structured data automatically.",
-    stat: "4 mins → 5 seconds per entry",
+    title: "The Financial Vision Accountant",
+    description: "Autonomous bookkeeping engine that transforms messy receipts into structured financial data. Eliminates manual human entry errors entirely.",
+    stat: "95% Reduction in Manual Entry",
+    subStat: "4 mins → 5 seconds per receipt",
     icon: Database,
-    tags: ["n8n", "OpenAI", "Telegram API"]
+    tags: ["OCR", "n8n", "GPT-4o", "Accounting API"],
+    type: "Financial Automation"
   },
   {
-    title: "Intelligent Email System",
-    description: "Gmail classification and draft-reply agent for high-growth founders. Context-aware triage for high-volume inboxes.",
-    stat: "25+ hours saved monthly",
+    title: "The Intelligent Inbox Architect",
+    description: "The founders' secret weapon for Inbox Zero. A multi-agent system that classifies, triages, and drafts context-aware replies based on brand voice.",
+    stat: "25+ Hours Reclaimed Monthly",
+    subStat: "Instant Sentiment Triage",
     icon: Mail,
-    tags: ["Zapier", "Claude 3.5", "Gmail API"]
+    tags: ["Claude 3.5", "Gmail API", "Vector Memory"],
+    type: "Inbox Engineering"
   },
   {
-    title: "CrystalCare Support",
-    description: "RAG-based AI support and lead capture system. Uses Pinecone for long-term memory and brand-specific knowledge.",
-    stat: "100% automated first response",
+    title: "CrystalCare Support Agent",
+    description: "Production-grade RAG support architecture. Handles complex customer queries across 5+ channels with multi-turn reasoning capabilities.",
+    stat: "843% Measured ROI",
+    subStat: "24/7 Multi-channel support",
     icon: MessageSquare,
-    tags: ["Pinecone", "Groq", "Airtable"]
+    tags: ["Pinecone", "Groq", "Airtable", "Webhooks"],
+    type: "Customer Experience"
   }
 ];
 
-const ProjectGallery: React.FC = () => {
+interface ProjectGalleryProps {
+  onOpenDetails: (project: any) => void;
+}
+
+const ProjectGallery: React.FC<ProjectGalleryProps> = ({ onOpenDetails }) => {
   return (
-    <section id="projects" className="py-24 px-6 relative overflow-hidden">
+    <section id="projects" className="py-32 px-6 relative overflow-hidden bg-slate-950">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-          <div>
-            <h2 className="text-sm font-bold text-cyan-400 uppercase tracking-[0.3em] mb-4">Case Studies</h2>
-            <h3 className="text-4xl md:text-5xl font-black tracking-tight">Validated Systems.</h3>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20">
+          <div className="max-w-xl">
+            <h2 className="text-sm font-bold text-cyan-400 uppercase tracking-[0.4em] mb-4">Engineering Portfolio</h2>
+            <h3 className="text-5xl md:text-6xl font-black tracking-tighter leading-none mb-6">ROI Systems.</h3>
+            <p className="text-slate-400 text-lg font-medium leading-relaxed">
+              Every system is measured by two metrics: <span className="text-slate-100">Time Saved</span> and <span className="text-slate-100">Capital ROI</span>. No fluff, just production-grade infrastructure.
+            </p>
           </div>
-          <p className="text-slate-400 max-w-md font-medium">
-            Deploying agentic workflows that replace manual labor with precision-engineered automation.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {projects.map((p, i) => (
-            <div key={i} className="group relative flex flex-col p-8 bg-slate-900/40 border border-slate-800 rounded-lg hover:border-cyan-500/50 transition-all hover:-translate-y-1">
-              <div className="p-3 w-fit bg-slate-950 rounded-lg border border-slate-800 mb-6 group-hover:border-cyan-500/30">
-                <p.icon className="w-6 h-6 text-slate-400 group-hover:text-cyan-400 transition-colors" />
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="group relative flex flex-col p-10 bg-slate-900/40 border border-slate-800/60 rounded-xl hover:border-cyan-500/40 transition-all duration-500"
+            >
+              <div className="flex justify-between items-start mb-8">
+                <div className="p-4 bg-slate-950 rounded-xl border border-slate-800 group-hover:border-cyan-500/20 transition-all">
+                  <p.icon className="w-7 h-7 text-slate-400 group-hover:text-cyan-400 transition-colors" />
+                </div>
+                <div className="text-[10px] font-black uppercase tracking-widest text-slate-600 bg-slate-950 px-2 py-1 border border-slate-800">
+                  BUILD_PROTO_{i+1}
+                </div>
               </div>
               
-              <h4 className="text-xl font-bold mb-3 group-hover:text-cyan-400 transition-colors">{p.title}</h4>
-              <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">{p.description}</p>
+              <h4 className="text-2xl font-black mb-4 group-hover:text-cyan-400 transition-colors tracking-tight">{p.title}</h4>
+              <p className="text-slate-400 text-sm leading-relaxed mb-8 flex-grow font-medium">{p.description}</p>
               
-              <div className="py-3 px-4 bg-cyan-500/5 border-l-2 border-cyan-500 mb-6">
-                <span className="text-[10px] uppercase font-black text-cyan-400/80 block mb-1">Impact</span>
-                <span className="text-sm font-bold text-slate-100">{p.stat}</span>
+              <div className="space-y-4 mb-8">
+                <div className="py-4 px-5 bg-cyan-500/5 border-l-4 border-cyan-500">
+                  <span className="text-[10px] uppercase font-black text-cyan-400/80 block mb-1">Impact Metric</span>
+                  <span className="text-lg font-black text-slate-100 tracking-tight">{p.stat}</span>
+                </div>
+                <div className="text-[10px] uppercase font-bold text-slate-500 tracking-widest pl-5 italic">
+                  → {p.subStat}
+                </div>
               </div>
 
-              <div className="flex flex-wrap gap-2 mb-8">
+              <div className="flex flex-wrap gap-2 mb-10">
                 {p.tags.map(tag => (
-                  <span key={tag} className="text-[10px] px-2 py-1 bg-slate-950 text-slate-500 rounded border border-slate-800 uppercase tracking-wider font-bold">
+                  <span key={tag} className="text-[9px] px-2 py-1 bg-slate-950 text-slate-500 rounded border border-slate-800 uppercase tracking-widest font-bold">
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <button className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-400 group-hover:text-cyan-400 transition-all">
-                System Deep Dive <ExternalLink className="w-3 h-3" />
+              <button 
+                onClick={() => onOpenDetails(p)}
+                className="w-full flex items-center justify-between group/btn py-4 border-t border-slate-800 text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 group-hover:text-cyan-400 transition-all"
+              >
+                Inspect Architecture
+                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-2 transition-transform" />
               </button>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

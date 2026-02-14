@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { ShoppingBag, ArrowUpRight, ShieldCheck, Zap, UserCheck, Search, Database, MessageCircle } from 'lucide-react';
+import { ShoppingBag, ArrowUpRight, ShieldCheck, Zap, UserCheck, Search, Database } from 'lucide-react';
 
 const agents = [
   {
@@ -12,7 +12,7 @@ const agents = [
     description: "Autonomously scrapes web data, synthesizes competitor reports, and monitors industry trends 24/7.",
     icon: Search,
     metrics: { efficiency: "+88%", latency: "Low" },
-    tags: ["Market Research", "Data Mining"]
+    tags: ["Market Research", "Data Mining", "GPT-4o", "Perplexity API"]
   },
   {
     id: "agent-002",
@@ -23,7 +23,7 @@ const agents = [
     description: "Handles initial outreach, objection handling, and appointment setting via LinkedIn and Email.",
     icon: UserCheck,
     metrics: { conversion: "+40%", volume: "High" },
-    tags: ["Lead Gen", "Appointment Setting"]
+    tags: ["Lead Gen", "n8n", "Clay", "Instantly"]
   },
   {
     id: "agent-003",
@@ -34,7 +34,7 @@ const agents = [
     description: "Synchronizes meetings, manages project boards, and automates status reporting across your stack.",
     icon: Zap,
     metrics: { time_saved: "20h/wk", sync: "Real-time" },
-    tags: ["Operations", "Productivity"]
+    tags: ["Operations", "Slack API", "Trello", "Zapier"]
   },
   {
     id: "agent-004",
@@ -45,11 +45,16 @@ const agents = [
     description: "Extracts line-item data from financial documents and reconciles accounts with 99.9% accuracy.",
     icon: Database,
     metrics: { accuracy: "99.9%", processing: "Instant" },
-    tags: ["Bookkeeping", "Finance"]
+    tags: ["Bookkeeping", "OCR", "Airtable", "Python"]
   }
 ];
 
-const Store: React.FC = () => {
+interface StoreProps {
+  onOpenDetails: (agent: any) => void;
+  onInitialize: (agent: any) => void;
+}
+
+const Store: React.FC<StoreProps> = ({ onOpenDetails, onInitialize }) => {
   const [filter, setFilter] = useState("All Agents");
 
   return (
@@ -93,13 +98,15 @@ const Store: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {agents.map((agent) => (
             <div key={agent.id} className="group relative flex flex-col bg-slate-900/20 border border-slate-800/50 hover:border-cyan-500/50 transition-all p-6 rounded-sm overflow-hidden">
-              {/* Card Status Line */}
               <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
               
               <div className="flex justify-between items-start mb-6">
-                <div className="p-3 bg-slate-950 border border-slate-800 rounded-lg group-hover:border-cyan-500/20 transition-all">
+                <button 
+                  onClick={() => onOpenDetails(agent)}
+                  className="p-3 bg-slate-950 border border-slate-800 rounded-lg group-hover:border-cyan-500/20 transition-all"
+                >
                   <agent.icon className="w-5 h-5 text-cyan-500" />
-                </div>
+                </button>
                 <div className="text-right">
                   <div className="text-[10px] uppercase font-bold text-slate-500 tracking-tighter mb-1">{agent.id}</div>
                   <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-emerald-500/20 bg-emerald-500/5">
@@ -109,7 +116,7 @@ const Store: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mb-4">
+              <div className="mb-4 cursor-pointer" onClick={() => onOpenDetails(agent)}>
                 <h4 className="text-xl font-black text-white group-hover:text-cyan-400 transition-colors">{agent.name}</h4>
                 <p className="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-4">{agent.type}</p>
                 <p className="text-slate-400 text-xs leading-relaxed line-clamp-3">{agent.description}</p>
@@ -129,7 +136,10 @@ const Store: React.FC = () => {
                   <div className="font-mono text-lg font-bold text-white tracking-tighter">
                     {agent.price}
                   </div>
-                  <button className="group/btn flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-950 font-black text-[10px] uppercase tracking-widest hover:bg-cyan-500 transition-all">
+                  <button 
+                    onClick={() => onInitialize(agent)}
+                    className="group/btn flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-950 font-black text-[10px] uppercase tracking-widest hover:bg-cyan-500 transition-all"
+                  >
                     Initialize
                     <ArrowUpRight className="w-3 h-3 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                   </button>
@@ -152,7 +162,7 @@ const Store: React.FC = () => {
             </div>
           </div>
           <p className="text-[10px] font-mono text-slate-600">
-            SESSION_ID: {Math.random().toString(36).substring(7).toUpperCase()} // AGENT_VER: 2.4.0
+            SESSION_ID: JEROY_S_ {Math.random().toString(36).substring(7).toUpperCase()}
           </p>
         </div>
       </div>
