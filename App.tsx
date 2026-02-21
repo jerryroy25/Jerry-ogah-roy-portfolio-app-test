@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import HormoziValueBar from './components/HormoziValueBar';
 import Store from './components/Store';
 import ProjectGallery from './components/ProjectGallery';
+import BrandEngineer from './components/BrandEngineer';
 import TechStack from './components/TechStack';
 import About from './components/About';
 import Contact from './components/Contact';
@@ -75,6 +76,7 @@ const App: React.FC = () => {
         <HormoziValueBar />
         <Store onOpenDetails={(data: Agent) => openModal(data, 'agent')} onInitialize={handleStoreInitialize} />
         <ProjectGallery onOpenDetails={(data: Project) => openModal(data, 'project')} />
+        <BrandEngineer />
         <DesignServices />
         <TechStack />
         <About />

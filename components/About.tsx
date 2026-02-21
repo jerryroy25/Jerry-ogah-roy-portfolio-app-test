@@ -27,33 +27,30 @@ const About: React.FC = () => {
             <div className="absolute -inset-12 bg-cyan-500/10 blur-[120px] rounded-full" />
             
             {/* Frame Housing - Optimized for Jerry's custom transparent portrait */}
-            <div className="relative aspect-[4/5] max-w-md mx-auto rounded-3xl p-[1px] bg-gradient-to-tr from-cyan-500 via-slate-800 to-cyan-400/20 shadow-2xl overflow-visible">
-              <div className="absolute inset-0 bg-slate-950 rounded-3xl" />
+            <div className="relative aspect-square max-w-md mx-auto rounded-full p-[1px] bg-gradient-to-tr from-cyan-500 via-slate-800 to-cyan-400/20 shadow-[0_0_50px_rgba(0,245,255,0.3)] overflow-visible">
+              <div className="absolute inset-0 bg-slate-950 rounded-full" />
               
-              <div className="relative h-full w-full rounded-3xl overflow-hidden border-4 border-slate-950 group bg-slate-900/40">
+              <div className="relative h-full w-full rounded-full overflow-hidden border-4 border-slate-950 group bg-slate-900/40">
                 {/* 
                    Dynamic Gradient Background for 'no bg' image 
-                   This ensures the subject stands out against a depth-filled tech background.
                 */}
                 <div className="absolute inset-0 bg-gradient-to-b from-slate-800/50 to-slate-950" />
                 <div className="absolute inset-0 grid-pattern opacity-10" />
 
                 <img 
-                  src="jeroy pic edited no bg.png" 
+                  src="https://lh3.googleusercontent.com/d/11e-dsyLWbXF0lNpjV3xEFuUqOFAId3BC" 
                   alt="Jerry Ogah Roy" 
                   className="relative z-10 h-full w-full object-cover headshot-filter scale-110 group-hover:scale-105 transition-transform duration-1000 ease-out"
-                  onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-                    // Fallback to a high-quality placeholder if the file is missing
-                    (e.target as HTMLImageElement).src = "https://res.cloudinary.com/dqpqndyvx/image/upload/v1771084461/Jeroy_profile_full_0.5x_zwrvgy.png";
-                  }}
+                  referrerPolicy="no-referrer"
                 />
                 
                 {/* HUD Overlay Elements */}
                 <div className="absolute inset-0 bg-cyan-500/5 mix-blend-overlay pointer-events-none z-20" />
-                <div className="absolute top-6 left-6 flex items-center gap-2 px-3 py-1 bg-slate-950/80 backdrop-blur-md border border-cyan-500/30 rounded-full z-30">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 px-3 py-1 bg-slate-950/80 backdrop-blur-md border border-cyan-500/30 rounded-full z-30 opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse" />
-                  <span className="text-[8px] font-black uppercase tracking-widest text-cyan-400">Status: Architect</span>
+                  <span className="text-[8px] font-black uppercase tracking-widest text-cyan-400">Brand Engineer</span>
                 </div>
+              </div>
 
                 {/* Vertical HUD markings */}
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-1 opacity-20 z-30">
@@ -76,7 +73,6 @@ const About: React.FC = () => {
               {/* Technical Brackets */}
               <div className="absolute -top-4 -left-4 w-16 h-16 border-t-2 border-l-2 border-cyan-500/30 rounded-tl-2xl" />
               <div className="absolute -bottom-4 -left-4 w-16 h-16 border-b-2 border-l-2 border-cyan-500/30 rounded-bl-2xl" />
-            </div>
           </motion.div>
 
           {/* Context Side: The Philosophy */}

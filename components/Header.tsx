@@ -43,11 +43,11 @@ const Header: React.FC = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'py-4 glass border-b' : 'py-8 bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <div className="flex items-center gap-2 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <div className="p-2 bg-cyan-500/10 rounded-lg border border-cyan-500/20 group-hover:bg-cyan-500/20 transition-all">
-            <Cpu className="w-5 h-5 text-cyan-400" />
+          <div className="p-1 bg-white rounded-lg border border-[#005A34]/20 group-hover:bg-[#005A34]/10 transition-all">
+            <img src="https://drive.google.com/uc?id=1XG6r7PobZxOnPSOG9zJuXouwn0SJ9Lt9" alt="Crystal Klair Logo" className="w-8 h-8 object-contain" referrerPolicy="no-referrer" />
           </div>
-          <span className="font-bold tracking-tighter text-xl uppercase">
-            JEROY<span className="text-cyan-400">.SOLUTIONS</span>
+          <span className="font-bold tracking-tighter text-xl uppercase text-[#005A34]">
+            CRYSTAL<span className="text-[#D4AF37]">KLAIR</span>
           </span>
         </div>
 
@@ -57,16 +57,16 @@ const Header: React.FC = () => {
             <button 
               key={item.name} 
               onClick={() => scrollToSection(item.id)}
-              className="text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors uppercase tracking-widest"
+              className="text-sm font-semibold text-slate-600 hover:text-[#005A34] transition-colors uppercase tracking-widest"
             >
               {item.name}
             </button>
           ))}
           <button 
             onClick={() => scrollToSection('contact')}
-            className="flex items-center gap-2 px-5 py-2.5 bg-cyan-500 text-slate-950 font-bold text-sm uppercase tracking-wider rounded-sm hover:bg-cyan-400 transition-all"
+            className="flex items-center gap-2 px-5 py-2.5 bg-[#005A34] text-white font-bold text-sm uppercase tracking-wider rounded-sm hover:bg-[#004A24] transition-all"
           >
-            Connect
+            Get a Quote
           </button>
         </div>
 

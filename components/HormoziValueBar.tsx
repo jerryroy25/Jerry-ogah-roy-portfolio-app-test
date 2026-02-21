@@ -5,10 +5,10 @@ import { motion } from 'framer-motion';
 
 const HormoziValueBar: React.FC = () => {
   const items = [
-    { label: "Automated Daily Tasks", value: 73, suffix: "%", desc: "Dream Outcome" },
-    { label: "Max Proven ROI", value: 2471, suffix: "%", desc: "Likelihood" },
-    { label: "Deployment Cycle", value: 78, suffix: "h", desc: "Time Delay" },
-    { label: "Effort for You", value: 0, suffix: "%", desc: "Effort & Sacrifice" },
+    { label: "Hours Reclaimed/Mo", value: 33, suffix: "+", desc: "Time Saved" },
+    { label: "Proven ROI", value: 843, suffix: "%", desc: "Investment Return" },
+    { label: "Data Entry Reduction", value: 95, suffix: "%", desc: "Efficiency Gain" },
+    { label: "Manual Chaos Removed", value: 100, suffix: "%", desc: "System Reliability" },
   ];
 
   return (

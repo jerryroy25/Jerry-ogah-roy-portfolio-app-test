@@ -1,5 +1,7 @@
 {
-  "name": "Jerry Ogah Roy - AI Automation Portfolio",
-  "description": "High-performance, tech-forward portfolio for Jerry Ogah Roy, an AI Automation & Workflow Engineer.",
-  "requestFramePermissions": []
+  "name": "Jeroy.Solution Portfolio",
+  "description": "my personal portfoloi project",
+  "requestFramePermissions": [
+    "microphone"
+  ]
 }
