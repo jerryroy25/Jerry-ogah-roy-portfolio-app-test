@@ -25,11 +25,25 @@ const projects = [
     roi: '33hrs/mo', 
     tech: 'Telegram/n8n',
     description: 'Telegram command hub for founders. Tasks, Research, & Scheduling.',
+    problem: 'Founders are overwhelmed by context-switching between 10+ apps for basic tasks like scheduling, research, and task management.',
+    solution: 'A centralized Telegram-based command center that uses multiple specialized agents to handle operations via simple natural language commands.',
+    features: [
+      'Natural Language Task Delegation',
+      'Automated Calendar Management',
+      'Real-time Web Research Agents',
+      'Multi-app Integration (Notion, Slack, Google)'
+    ],
+    workflow: [
+      'Input: Founder sends voice or text command to Telegram.',
+      'Routing: Master agent identifies the intent and assigns a sub-agent.',
+      'Execution: Sub-agent interacts with external APIs (Notion, Google).',
+      'Confirmation: System returns a summary of the completed action.'
+    ],
     icon: Bot,
     price: '$899',
     status: 'Ready',
     tags: ['Telegram', 'n8n', 'Automation', 'Multi-Agent'],
-    metrics: { 'Time Saved': '33h/mo', 'Efficiency': 'High' }
+    metrics: { 'Time Saved': '33h/mo', 'Context Switching': '-90%' }
   },
   { 
     id: 2, 
@@ -38,6 +52,20 @@ const projects = [
     roi: '25hrs/mo', 
     tech: 'OpenAI/n8n',
     description: 'Automated classification, summarization, and auto-replies.',
+    problem: 'Founders spend 2+ hours daily triaging emails, leading to delayed responses and missed opportunities.',
+    solution: 'An AI-driven inbox architect that automatically classifies incoming mail, generates summaries, and drafts context-aware replies.',
+    features: [
+      'Automated Labeling & Triage',
+      'Daily "Executive Summary" Reports',
+      'Brand-Voice Consistent Drafts',
+      'Spam & Low-Value Filter Engine'
+    ],
+    workflow: [
+      'Trigger: New email arrives in Gmail.',
+      'Analysis: LLM analyzes sentiment, urgency, and category.',
+      'Action: System applies labels and generates a draft reply.',
+      'Reporting: Summary is sent to Slack/Telegram for quick review.'
+    ],
     icon: Mail,
     price: '$599',
     status: 'Ready',
@@ -51,11 +79,25 @@ const projects = [
     roi: '95% Speed', 
     tech: 'HR-Tech',
     description: 'Evaluates 50+ resumes in 60s. Zero-bias ranking engine.',
+    problem: 'Manual resume screening is slow, prone to bias, and often misses top-tier talent in high-volume hiring.',
+    solution: 'A high-speed ranking engine that evaluates candidates against specific job requirements with mathematical precision and zero bias.',
+    features: [
+      'Bulk PDF/Docx Processing',
+      'Requirement Matching Logic',
+      'Zero-Bias Scoring Algorithm',
+      'Automated Rejection/Interview Emails'
+    ],
+    workflow: [
+      'Upload: Resumes are dropped into a shared folder or portal.',
+      'Parsing: System extracts skills, experience, and education.',
+      'Scoring: AI ranks candidates based on job-specific criteria.',
+      'Export: Top 5% are highlighted for immediate human review.'
+    ],
     icon: FileSearch,
     price: '$749',
     status: 'Ready',
     tags: ['HR-Tech', 'AI Ranking', 'Recruitment', 'Python'],
-    metrics: { 'Processing Speed': '95% faster', 'Bias Reduction': 'Significant' }
+    metrics: { 'Processing Speed': '95% faster', 'Bias Reduction': '100%' }
   },
   { 
     id: 4, 
@@ -64,6 +106,20 @@ const projects = [
     roi: 'Automated', 
     tech: 'Scraping/AI',
     description: 'Automated tracking and outreach for high-volume opportunities.',
+    problem: 'Job seekers and agencies waste hours manually searching boards and tracking applications in spreadsheets.',
+    solution: 'A proactive scraping and tracking agent that identifies high-value opportunities and automates the initial outreach phase.',
+    features: [
+      'Multi-Board Web Scraping',
+      'Automated Application Tracking',
+      'AI-Personalized Outreach Drafts',
+      'Status Change Notifications'
+    ],
+    workflow: [
+      'Scrape: System monitors LinkedIn, Indeed, and niche boards.',
+      'Filter: AI identifies jobs matching the user profile.',
+      'Track: Opportunities are added to a centralized CRM.',
+      'Outreach: Personalized cover letters are generated automatically.'
+    ],
     icon: Briefcase,
     price: '$499',
     status: 'Ready',
@@ -77,6 +133,20 @@ const projects = [
     roi: 'Real-time', 
     tech: 'Market-Data',
     description: 'Crypto Price & Volatility tracker with sentiment analysis.',
+    problem: 'Traders struggle to monitor 24/7 market volatility and social sentiment across thousands of tokens.',
+    solution: 'A real-time monitoring engine that combines price action with social sentiment to identify potential breakouts before they happen.',
+    features: [
+      'Real-time Volatility Alerts',
+      'Social Sentiment Aggregation',
+      'Whale Wallet Tracking',
+      'Multi-Exchange Data Feed'
+    ],
+    workflow: [
+      'Ingest: Connects to Binance/Coinbase & Twitter APIs.',
+      'Analyze: Correlates price spikes with social volume.',
+      'Alert: Sends high-conviction signals to Telegram.',
+      'Log: Records all signals for performance auditing.'
+    ],
     icon: TrendingUp,
     price: '$699',
     status: 'Ready',
@@ -90,11 +160,25 @@ const projects = [
     roi: 'Signals', 
     tech: 'TradingView',
     description: 'Advanced charting and signal generation agent.',
+    problem: 'Technical analysis is time-consuming and prone to human emotional bias during high-volatility periods.',
+    solution: 'STEVE is a high-frequency technical analysis engine that identifies high-probability setups using momentum and volume profile analysis.',
+    features: [
+      'Multi-Timeframe Confluence Checking',
+      'Real-time Volume Profile Analysis',
+      'Automated Fibonacci & Pivot Mapping',
+      'Sentiment Overlay from News Feeds'
+    ],
+    workflow: [
+      'Data Ingestion: Connects to TradingView Webhooks.',
+      'Pattern Recognition: Scans for 15+ proprietary setups.',
+      'Validation: Cross-references with volume data.',
+      'Signal Dispatch: Sends alerts via Telegram or API.'
+    ],
     icon: LineChart,
     price: '$999',
     status: 'Ready',
     tags: ['TradingView', 'Technical Analysis', 'Signals', 'Webhooks'],
-    metrics: { 'Signal Accuracy': 'High', 'Execution': 'Instant' }
+    metrics: { 'Signal Accuracy': '82%', 'Execution': 'Instant' }
   },
   { 
     id: 7, 
@@ -103,6 +187,20 @@ const projects = [
     roi: '5s Entry', 
     tech: 'OCR/Vision',
     description: 'Receipt-to-Sheet automation. 4 mins -> 5 seconds per entry.',
+    problem: 'Manual bookkeeping is the #1 administrative bottleneck for small businesses, leading to tax errors and lost deductions.',
+    solution: 'A vision-based extraction engine that digitizes physical financial documents and reconciles them with your ledger in seconds.',
+    features: [
+      'Handwritten Receipt Recognition',
+      'Automated Tax Categorization',
+      'Duplicate & Fraud Detection',
+      'Direct Accounting Sync'
+    ],
+    workflow: [
+      'Capture: User uploads image via mobile or email.',
+      'Extraction: Vision model identifies all data points.',
+      'Validation: Logic engine checks for consistency.',
+      'Sync: Data is pushed to QuickBooks/Xero.'
+    ],
     icon: Receipt,
     price: '$649',
     status: 'Ready',
@@ -116,6 +214,20 @@ const projects = [
     roi: 'Sentiment', 
     tech: 'Social API',
     description: 'Real-time social mention and sentiment tracking engine.',
+    problem: 'Brands often miss critical customer feedback or PR crises because they can\'t monitor every social platform in real-time.',
+    solution: 'A 24/7 brand sentinel that tracks mentions across the web and analyzes sentiment to alert you to critical changes immediately.',
+    features: [
+      'Real-time Mention Tracking',
+      'Sentiment Trend Analysis',
+      'Competitor Benchmarking',
+      'Automated Crisis Alerts'
+    ],
+    workflow: [
+      'Monitor: Scans Twitter, Reddit, and News APIs.',
+      'Analyze: LLM determines sentiment and urgency.',
+      'Notify: Critical mentions are sent to Slack.',
+      'Respond: System suggests AI-generated response drafts.'
+    ],
     icon: BarChart3,
     price: '$799',
     status: 'Ready',
@@ -129,11 +241,25 @@ const projects = [
     roi: 'Auto-Post', 
     tech: 'Automation',
     description: 'Multi-platform automated content factory for social media.',
+    problem: 'Consistent content creation is expensive and time-consuming, often leading to ghost-town social profiles.',
+    solution: 'An automated content factory that turns RSS feeds and news into platform-specific social media posts automatically.',
+    features: [
+      'RSS to Social Transformation',
+      'Platform-Specific Formatting',
+      'Automated Scheduling & Posting',
+      'Image Generation Integration'
+    ],
+    workflow: [
+      'Ingest: System reads new articles from RSS feeds.',
+      'Rewrite: AI transforms articles into social posts.',
+      'Review: (Optional) User approves drafts in dashboard.',
+      'Deploy: Posts are scheduled across LinkedIn/X/FB.'
+    ],
     icon: Rss,
     price: '$549',
     status: 'Ready',
     tags: ['RSS', 'Content Generation', 'Social Media', 'Automation'],
-    metrics: { 'Post Frequency': 'Automated', 'Platform Reach': 'Multi' }
+    metrics: { 'Post Frequency': 'Daily', 'Manual Effort': '-95%' }
   },
   { 
     id: 10, 
@@ -142,6 +268,20 @@ const projects = [
     roi: '843% ROI', 
     tech: 'RAG/Knowledge',
     description: 'RAG-based 24/7 retail support agent. Proven 843% ROI.',
+    problem: 'Human support teams are expensive, slow to respond after hours, and often provide inconsistent information.',
+    solution: 'A production-grade RAG support architecture that provides 24/7 context-aware assistance based on your specific knowledge base.',
+    features: [
+      'Multi-Channel Deployment',
+      'Context-Aware RAG Memory',
+      'Automated Ticket Escalation',
+      'Multi-Language Support'
+    ],
+    workflow: [
+      'Query: Customer asks a question on the website.',
+      'Retrieve: System searches the vector database.',
+      'Generate: AI constructs a response using retrieved data.',
+      'Feedback: System logs interaction for continuous learning.'
+    ],
     icon: MessageSquare,
     price: '$1,299',
     status: 'Ready',

@@ -21,7 +21,13 @@ export interface Agent {
   type: string;
   price: string;
   status: string;
+  roi: string;
   description: string;
+  longDescription?: string;
+  problem?: string;
+  solution?: string;
+  features?: string[];
+  workflow?: string[];
   icon: LucideIcon;
   metrics: Record<string, string>;
   tags: string[];
@@ -30,6 +36,11 @@ export interface Agent {
 export interface Project {
   title: string;
   description: string;
+  longDescription?: string;
+  problem?: string;
+  solution?: string;
+  features?: string[];
+  workflow?: string[];
   stat: string;
   subStat: string;
   icon: LucideIcon;
